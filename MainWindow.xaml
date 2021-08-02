@@ -6,7 +6,20 @@
         xmlns:local="clr-namespace:process_note"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <TabControl>
+        <TabItem Header="CPU usage">
+            <Grid Background="#FFE5E5E5"/>
+        </TabItem>
+        <TabItem Header="Memory usage">
+            <Grid Background="#FFE5E5E5"/>
+        </TabItem>
+        <TabItem Header="Running time">
+            <Grid Background="#FFE5E5E5"/>
+        </TabItem>
+        <TabItem Header="Start time">
+            <Grid Background="#FFE5E5E5"/>
+        </TabItem>
+    </TabControl>
 
-    </Grid>
+
 </Window>
