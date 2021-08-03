@@ -41,6 +41,8 @@ namespace process_note
             this.Processes.Clear();
             foreach (var process in GetProcesses())
             {
+                //var CPUTime = process.TotalProcessorTime.ToString();
+                //this.Processes.Add(CPUTime);
                 this.Processes.Add(process);
             }
         }

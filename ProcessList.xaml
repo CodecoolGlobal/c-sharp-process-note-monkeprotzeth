@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="process_note.ProcessList"
+﻿<UserControl x:Name="loaded" x:Class="process_note.ProcessList"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,6 +11,10 @@
             <GridView>
                 <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=Id}"/>
                 <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=ProcessName}"/>
+                <GridViewColumn Header="CPU Usage" DisplayMemberBinding="{Binding Path=CPUTime}"/>
+                <GridViewColumn Header="Memory Usage" DisplayMemberBinding="{Binding Path=VirtualMemorySize}"/>
+                <GridViewColumn Header="Start time" DisplayMemberBinding="{Binding Path=StartTime}"/>
+                <GridViewColumn Header="Running Time" DisplayMemberBinding="{Binding Path=RunningTime}"/>
             </GridView>
         </ListView.View>
     </ListView>
