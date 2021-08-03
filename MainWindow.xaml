@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <TabControl>
-        <TabItem Header="CPU usage">
-            <Grid Background="#FFE5E5E5"/>
+        <TabItem Header="Running Processes">
+            <local:ProcessList x:Name="ctrProcessList"/>
         </TabItem>
         <TabItem Header="Memory usage">
             <Grid Background="#FFE5E5E5"/>
