@@ -24,5 +24,7 @@ namespace process_note
         {
             InitializeComponent();
         }
+
+
     }
 }

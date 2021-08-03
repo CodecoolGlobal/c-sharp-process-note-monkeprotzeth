@@ -15,7 +15,7 @@
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel>
-                                <TextBox Width="500" MaxLength="200" />
+                                <TextBox Width="500" MaxLength="200"  />
                             </StackPanel>
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
@@ -23,7 +23,7 @@
                 <GridViewColumn>
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Save Comment"/>
+                            <Button Content="Save Comment" Click="SaveBtn_Click"/>
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>

@@ -22,7 +22,10 @@ namespace process_note
     /// </summary>
     public partial class ProcessList : UserControl
     {
+        
         public ObservableCollection<Process> Processes { get; set; }
+        public Comment _Comments = new Comment();
+      
 
         public ProcessList()
         {
@@ -44,5 +47,15 @@ namespace process_note
                 this.Processes.Add(process);
             }
         }
+
+   
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _Comments.Comments.Add("some comment");
+            Save.saveData(_Comments, "comments.xml");
+        }
+        
+        
     }
 }
