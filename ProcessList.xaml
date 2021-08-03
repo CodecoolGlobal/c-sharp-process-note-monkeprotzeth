@@ -9,7 +9,7 @@
     <ListView ItemsSource="{Binding Path=Processes}">
         <ListView.View>
             <GridView>
-                <GridViewColumn Header="ID"/>
+                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=Id}"/>
                 <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=ProcessName}"/>
             </GridView>
         </ListView.View>
