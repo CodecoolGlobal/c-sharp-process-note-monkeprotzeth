@@ -11,6 +11,23 @@
             <GridView>
                 <GridViewColumn Header="ID"/>
                 <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=ProcessName}"/>
+                <GridViewColumn Header="Comment" >
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox Width="500" MaxLength="200" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+                <GridViewColumn>
+                    <GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Save Comment"/>
+                        </DataTemplate>
+                    </GridViewColumn.CellTemplate>
+                </GridViewColumn>
+               
             </GridView>
         </ListView.View>
     </ListView>
