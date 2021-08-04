@@ -4,6 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:process_note"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+
+    <UserControl.Resources>
+        <!--<Style TargetType="GridView">
+            <Setter Property="Background" Value="#8FE582" />
+            </Style>-->
+    </UserControl.Resources>
+
+    <ListView ItemsSource="{Binding Path=Processes}">
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <ListView ItemsSource="{Binding Path=Processes}" MouseDoubleClick="ListView_MouseDoubleClick">
@@ -19,5 +28,4 @@
             </GridView>
         </ListView.View>
     </ListView>
-
 </UserControl>

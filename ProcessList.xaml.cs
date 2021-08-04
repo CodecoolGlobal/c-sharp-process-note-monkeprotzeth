@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
+using process_note.ViewModels;
+using System.Globalization;
 using System.Windows.Controls.Primitives;
 
 namespace process_note
@@ -23,18 +25,39 @@ namespace process_note
     /// </summary>
     public partial class ProcessList : UserControl
     {
-        public ObservableCollection<Process> Processes { get; set; }
+        public ObservableCollection<WindowsProcess> Processes { get; set; }
 
         public ProcessList()
         {
             InitializeComponent();
-            Processes = new ObservableCollection<Process>();
+            Processes = new ObservableCollection<WindowsProcess>();
             DataContext = this;
         }
 
-        public Process[] GetProcesses()
+        public List<WindowsProcess> GetProcesses()
         {
-            return Process.GetProcesses();
+            List<WindowsProcess> windowsProcesses = new List<WindowsProcess>();
+            foreach (var process in Process.GetProcesses())
+            {
+                var windowsprocess = new WindowsProcess();
+                windowsprocess.Id = process.Id;
+                windowsprocess.ProcessName = process.ProcessName;
+                windowsprocess.VirtualMemorySize = process.VirtualMemorySize;
+
+                try
+                {
+                    windowsprocess.StartTime = process.StartTime.ToString("h'h 'm'm 's's'");
+                    windowsprocess.CPUTime = process.TotalProcessorTime.ToString();
+                    windowsprocess.RunningTime = (process.StartTime - DateTime.Now).ToString("h'h 'm'm 's's'");
+                }
+                catch
+                { }
+                
+
+                windowsProcesses.Add(windowsprocess);
+
+            }
+            return windowsProcesses;
         }
 
         private void RefreshList()
