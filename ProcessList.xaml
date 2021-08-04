@@ -6,13 +6,34 @@
              xmlns:local="clr-namespace:process_note"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
-    <ListView ItemsSource="{Binding Path=Processes}">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=Id}"/>
-                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=ProcessName}"/>
-            </GridView>
-        </ListView.View>
-    </ListView>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto">
+        <StackPanel >
+            <ListView ItemsSource="{Binding Path=Processes}" x:Name="CommentColumn">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=ProcessName}"/>
+                        <GridViewColumn Header="Comment"  >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel >
+                                        <TextBox Width="500" MaxLength="200"  />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+
+
+                </ListView.View>
+            </ListView>
+            <Button Content="Save Comments" Click="SaveBtn_Click"/>
+        </StackPanel>
+
+
+    </ScrollViewer>
+   
+   
 
 </UserControl>
