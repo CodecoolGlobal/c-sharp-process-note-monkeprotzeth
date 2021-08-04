@@ -16,6 +16,7 @@ using System.Diagnostics;
 using System.Collections.ObjectModel;
 using process_note.ViewModels;
 using System.Globalization;
+using System.Windows.Controls.Primitives;
 
 namespace process_note
 {
@@ -59,13 +60,23 @@ namespace process_note
             return windowsProcesses;
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void RefreshList()
         {
             this.Processes.Clear();
             foreach (var process in GetProcesses())
             {
                 this.Processes.Add(process);
             }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshList();
+        }
+
+        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            RefreshList();
         }
     }
 }
