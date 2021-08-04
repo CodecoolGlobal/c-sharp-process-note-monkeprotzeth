@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
+using process_note.ViewModels;
+using System.Globalization;
+using System.Windows.Controls.Primitives;
 
 
 namespace process_note
@@ -23,24 +26,49 @@ namespace process_note
     /// </summary>
     public partial class ProcessList : UserControl
     {
+
+        public ObservableCollection<WindowsProcess> Processes { get; set; }
+
         
-        public ObservableCollection<Process> Processes { get; set; }
+       
         public Comment _Comments = new Comment();
       
+
 
         public ProcessList()
         {
             InitializeComponent();
-            Processes = new ObservableCollection<Process>();
+            Processes = new ObservableCollection<WindowsProcess>();
             DataContext = this;
         }
 
-        public Process[] GetProcesses()
+        public List<WindowsProcess> GetProcesses()
         {
-            return Process.GetProcesses();
+            List<WindowsProcess> windowsProcesses = new List<WindowsProcess>();
+            foreach (var process in Process.GetProcesses())
+            {
+                var windowsprocess = new WindowsProcess();
+                windowsprocess.Id = process.Id;
+                windowsprocess.ProcessName = process.ProcessName;
+                windowsprocess.VirtualMemorySize = process.VirtualMemorySize;
+
+                try
+                {
+                    windowsprocess.StartTime = process.StartTime.ToString("h'h 'm'm 's's'");
+                    windowsprocess.CPUTime = process.TotalProcessorTime.ToString();
+                    windowsprocess.RunningTime = (process.StartTime - DateTime.Now).ToString("h'h 'm'm 's's'");
+                }
+                catch
+                { }
+                
+
+                windowsProcesses.Add(windowsprocess);
+
+            }
+            return windowsProcesses;
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void RefreshList()
         {
             this.Processes.Clear();
             foreach (var process in GetProcesses())
@@ -48,6 +76,16 @@ namespace process_note
                 this.Processes.Add(process);
             }
         }
+
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            RefreshList();
+        }
+
+        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            RefreshList();
 
 
 
@@ -90,6 +128,7 @@ public static class Helper
                     yield return childOfChild;
                 }
             }
+
         }
     }
 
