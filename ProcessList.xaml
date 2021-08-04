@@ -6,10 +6,11 @@
              xmlns:local="clr-namespace:process_note"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
-    <ListView ItemsSource="{Binding Path=Processes}">
+    <ListView ItemsSource="{Binding Path=Processes}" MouseDoubleClick="ListView_MouseDoubleClick">
         <ListView.View>
             <GridView>
-                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=Id}"/>
+                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=Id}">
+                </GridViewColumn>
                 <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=ProcessName}"/>
                 <GridViewColumn Header="CPU Usage" DisplayMemberBinding="{Binding Path=CPUTime}"/>
                 <GridViewColumn Header="Memory Usage" DisplayMemberBinding="{Binding Path=VirtualMemorySize}"/>
