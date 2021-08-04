@@ -5,21 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:process_note"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Closing="windowClose">
-    <TabControl>
-        <TabItem Header="Running Processes">
-            <local:ProcessList x:Name="ctrProcessList"/>
-        </TabItem>
-        <TabItem Header="Memory usage">
-            <Grid Background="#FFE5E5E5"/>
-        </TabItem>
-        <TabItem Header="Running time">
-            <Grid Background="#FFE5E5E5"/>
-        </TabItem>
-        <TabItem Header="Start time">
-            <Grid Background="#FFE5E5E5"/>
-        </TabItem>
-    </TabControl>
 
+        Title="Running processes" Height="450" Width="800" Closing="windowClose">
+    <Grid ShowGridLines="True">
+        <local:ProcessList x:Name="ctrProcessList"/>
+    </Grid>
 
 </Window>
+
