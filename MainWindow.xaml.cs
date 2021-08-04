@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Utils.CommonDialogs.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,5 +27,30 @@ namespace process_note
         }
 
 
+        //Alert user to save when closing
+        private void windowClose(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            DialogResult dr = (DialogResult)MessageBox.Show("Don't forget to save your comments before exiting! Are you sure you wanna exit?", "Exit", MessageBoxButton.OKCancel);
+
+
+
+            if (dr == DevExpress.Utils.CommonDialogs.Internal.DialogResult.OK) 
+            {
+                e.Cancel = false; //Close the form
+            }
+            else if (dr == DevExpress.Utils.CommonDialogs.Internal.DialogResult.Cancel)
+            {
+                e.Cancel = true; //No operation
+            }
+
+           
+            }
+
+
+
+        }
+
     }
-}
+
+

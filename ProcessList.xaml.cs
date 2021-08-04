@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
 
+
 namespace process_note
 {
     /// <summary>
@@ -47,6 +48,7 @@ namespace process_note
                 this.Processes.Add(process);
             }
         }
+
 
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
