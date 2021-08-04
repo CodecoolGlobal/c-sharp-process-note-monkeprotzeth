@@ -29,10 +29,10 @@ namespace process_note
 
         public ObservableCollection<WindowsProcess> Processes { get; set; }
 
-        
-       
+
+
         public Comment _Comments = new Comment();
-      
+
 
 
         public ProcessList()
@@ -60,7 +60,7 @@ namespace process_note
                 }
                 catch
                 { }
-                
+
 
                 windowsProcesses.Add(windowsprocess);
 
@@ -86,7 +86,7 @@ namespace process_note
         private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             RefreshList();
-
+        }
 
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
@@ -103,8 +103,8 @@ namespace process_note
             }
             Save.saveData(_Comments, "comm.xml");
         }
-        
-        
+
+
     }
 }
 
@@ -128,7 +128,6 @@ public static class Helper
                     yield return childOfChild;
                 }
             }
-
         }
     }
 
@@ -137,3 +136,4 @@ public static class Helper
 
 
 }
+
